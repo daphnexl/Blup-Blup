@@ -10,6 +10,18 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void RestartGame() {
+        Debug.Log("Game re-starting !");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+    }
+
+    public void BackMenu() {
+        Debug.Log("Backing to the menu...");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Time.timeScale = 1;
+    }
+
     public void QuitGame() {
         Debug.Log("Quiting the game.");
         Application.Quit();

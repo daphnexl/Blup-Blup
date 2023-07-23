@@ -5,11 +5,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class kuş : MonoBehaviour
 {
-    public float zıplama;
 
     Rigidbody2D rb;
     GameScript gameScript;
+
+    public float zıplama;
     public TMP_Text skor_text;
+    public TMP_Text scoreTextGameOver;
     public float skor;
 
     void Start() {
@@ -24,13 +26,14 @@ public class kuş : MonoBehaviour
         if(Input.GetMouseButtonDown(0)) {
             rb.velocity = Vector2.up * zıplama;
         }
-        skor_text.text = skor.ToString();
+        skor_text.text = "Score: " + skor.ToString();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Zemin") || other.gameObject.CompareTag("Boru"))
         {
+            scoreTextGameOver.text = "Score: " + skor.ToString();
             gameScript.GameOver();
         }
         else if (other.gameObject.CompareTag("Scorer"))
